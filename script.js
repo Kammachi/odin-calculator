@@ -34,25 +34,74 @@ function operate(n1, n2, operator) {
     }
 }
 
-const displaySpace = document.querySelector('#display');
-const numbers = document.querySelectorAll('.digit, .operator-button');
 
-let displayValue;
+const display = document.querySelector('#display');
+
+let number1;
+let operator;
+let operatorLast = false;
+
+
+const numbers = document.querySelectorAll('.digit');
 
 numbers.forEach((number) => number.addEventListener('click', () => {
-    displaySpace.textContent += number.textContent;
-    displayValue = displaySpace.textContent;
+    if (operator && operatorLast == true || display.textContent == "NO") {
+        display.textContent = "";
+    }
+
+    display.textContent += number.value;
+    operatorLast = false;
+}));
+
+
+const operators = document.querySelectorAll('.operator-button');
+
+operators.forEach((operatorKey) => operatorKey.addEventListener('click', () => {
+    
+    if (!operatorLast) {
+        if (!operator) {
+            number1 = display.textContent;
+            display.textContent = "";
+        } else {
+            number1 = operate(number1, display.textContent, operator)
+
+            if (number1.toString().length > 10) {
+                number1 = Math.round(number1 * 100000000) / 100000000;
+            }
+
+            display.textContent = number1;
+        }
+    }
+
+    operator = operatorKey.value;
+    operatorLast = true;
+
 }));
 
 
 const evaluateButton = document.querySelector('#evaluate');
 
-
 evaluateButton.addEventListener('click', () => {
-    displaySplit = displayValue.split(" ");
-    const number1 = displaySplit[0];
-    const operator = displaySplit[1];
-    const number2 = displaySplit[2];
-    displayValue = operate(number1, number2, operator);
-    displaySpace.textContent = displayValue;
+    if (number1 && display.textContent) {
+        number1 = operate(number1, display.textContent, operator)
+
+        if (number1.toString().length > 10) {
+            number1 = Math.round(number1 * 100000000) / 100000000;
+        }
+
+        display.textContent = number1;
+        operator = null;
+    } else {
+        display.textContent = number1;
+    }
+});
+
+
+const clear = document.querySelector('#clear');
+
+clear.addEventListener('click', () => {
+    number1 = null;
+    operator = null;
+    operatorLast = false;
+    display.textContent = "";
 });

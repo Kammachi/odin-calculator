@@ -1,6 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
 #calculator {
-    width: 240px;
-    border: solid 3px black;
+    width: 400px;
+    border: solid 4px black;
     border-radius: 8px;
     background-color: grey;
     font-size: 32px;
@@ -9,8 +13,10 @@
 
 #display {
     background-color: skyblue;
-    border-bottom: solid 2px blue;
-    height: 40px;
+    border-bottom: solid 2px black;
+    height: 56px;
+    padding: 8px;
+    text-align: end;
 }
 
 #buttons {
@@ -19,7 +25,8 @@
 
 button {
     font-size: 28px;
-    width: 48px;
+    width: 88px;
+    height: 48px;
     margin-bottom: 6px;
     border: solid 2px black;
     border-radius: 4px;
