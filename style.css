@@ -3,7 +3,8 @@ body {
 }
 
 #calculator {
-    width: 400px;
+    box-sizing: border-box;
+    width: 414px;
     border: solid 4px black;
     border-radius: 8px;
     background-color: grey;
@@ -11,32 +12,54 @@ body {
     margin: auto;
 }
 
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 8px;
+    border: solid 3px rgb(61, 61, 61);
+}
+
 #display {
+    box-sizing: border-box;
     background-color: skyblue;
-    border-bottom: solid 2px black;
-    height: 56px;
+    border: solid 3px black;
+    border-radius: 8px;
+    height: 64px;
     padding: 8px;
     text-align: end;
+    font-size: 40px;
+    margin-bottom: 8px;
 }
 
 #buttons {
-    padding: 8px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 4px;
+    gap: 4px;
 }
 
 button {
     font-size: 28px;
     width: 88px;
     height: 48px;
-    margin-bottom: 6px;
     border: solid 2px black;
     border-radius: 4px;
+    font-weight: 700;
 }
 
+.delete, .dot {width: 180px}
 
-#operators {
-    display: flex;
-    flex-direction: column;
-}
+.operator-button {background-color: rgb(0, 225, 0);}
 
+.operator-button:hover {background-color: rgb(0, 175, 0);}
 
+.operator-button:active {background-color: rgb(0, 125, 0);}
 
+.menu-button {background-color: rgb(225, 0, 0);}
+
+.menu-button:hover {background-color: rgb(175, 0, 0);}
+
+.menu-button:active {background-color: rgb(125, 0, 0)}
